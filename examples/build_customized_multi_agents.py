@@ -60,6 +60,7 @@ class SimpleWriteTest(Action):
     name: str = "SimpleWriteTest"
 
     async def run(self, context: str, k: int = 3):
+        logger.info(f"SimpleWriteTest got context: {context}")
         prompt = self.PROMPT_TEMPLATE.format(context=context, k=k)
 
         rsp = await self._aask(prompt)

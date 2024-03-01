@@ -1,0 +1,356 @@
+{
+    "env": {
+        "desc": "",
+        "roles": {
+            "SimpleCoder": {
+                "name": "Alice",
+                "profile": "SimpleCoder",
+                "goal": "",
+                "constraints": "",
+                "desc": "",
+                "is_human": false,
+                "role_id": "",
+                "states": [
+                    "1. SimpleWriteCode"
+                ],
+                "actions": [
+                    {
+                        "name": "SimpleWriteCode",
+                        "i_context": "",
+                        "prefix": "You are a SimpleCoder, named Alice, your goal is . ",
+                        "desc": "",
+                        "PROMPT_TEMPLATE": "\n    Write a python function that can {instruction}.\n    Return ```python your_code_here ``` with NO other texts,\n    your code:\n    ",
+                        "__module_class_name": "__main__.SimpleWriteCode"
+                    }
+                ],
+                "rc": {
+                    "memory": {
+                        "storage": [
+                            {
+                                "id": "dc0ccbf712d44c5dbde8b0086df7b6fa",
+                                "content": "write a function that calculates the product of a list. The code should be used in the main function.",
+                                "instruct_content": null,
+                                "role": "Human",
+                                "cause_by": "metagpt.actions.add_requirement.UserRequirement",
+                                "sent_from": "",
+                                "send_to": [
+                                    "<all>"
+                                ]
+                            },
+                            {
+                                "id": "87208cac25f84a7cb99ad6267326051a",
+                                "content": "\ndef product_of_list(list1):\n    product = 1\n    for num in list1:\n        product *= num\n    return product\n",
+                                "instruct_content": null,
+                                "role": "SimpleCoder",
+                                "cause_by": "__main__.SimpleWriteCode",
+                                "sent_from": "__main__.SimpleCoder",
+                                "send_to": [
+                                    "<all>"
+                                ]
+                            }
+                        ],
+                        "index": {
+                            "metagpt.actions.add_requirement.UserRequirement": [
+                                {
+                                    "id": "dc0ccbf712d44c5dbde8b0086df7b6fa",
+                                    "content": "write a function that calculates the product of a list. The code should be used in the main function.",
+                                    "instruct_content": null,
+                                    "role": "Human",
+                                    "cause_by": "metagpt.actions.add_requirement.UserRequirement",
+                                    "sent_from": "",
+                                    "send_to": [
+                                        "<all>"
+                                    ]
+                                }
+                            ],
+                            "__main__.SimpleWriteCode": [
+                                {
+                                    "id": "87208cac25f84a7cb99ad6267326051a",
+                                    "content": "\ndef product_of_list(list1):\n    product = 1\n    for num in list1:\n        product *= num\n    return product\n",
+                                    "instruct_content": null,
+                                    "role": "SimpleCoder",
+                                    "cause_by": "__main__.SimpleWriteCode",
+                                    "sent_from": "__main__.SimpleCoder",
+                                    "send_to": [
+                                        "<all>"
+                                    ]
+                                }
+                            ]
+                        },
+                        "ignore_id": false
+                    },
+                    "working_memory": {
+                        "storage": [],
+                        "index": {},
+                        "ignore_id": false
+                    },
+                    "state": -1,
+                    "watch": [
+                        "metagpt.actions.add_requirement.UserRequirement",
+                        "__main__.SimpleQA"
+                    ],
+                    "react_mode": "react",
+                    "max_react_loop": 1
+                },
+                "addresses": [
+                    "Alice",
+                    "__main__.SimpleCoder"
+                ],
+                "planner": {
+                    "plan": {
+                        "goal": "",
+                        "context": "",
+                        "tasks": [],
+                        "task_map": {},
+                        "current_task_id": ""
+                    },
+                    "working_memory": {
+                        "storage": [],
+                        "index": {},
+                        "ignore_id": false
+                    },
+                    "auto_run": false,
+                    "use_tools": false
+                },
+                "recovered": false,
+                "latest_observed_msg": null,
+                "__module_class_name": "__main__.SimpleCoder"
+            },
+            "SimpleQAEngineer": {
+                "name": "Ryan",
+                "profile": "SimpleQAEngineer",
+                "goal": "",
+                "constraints": "",
+                "desc": "",
+                "is_human": false,
+                "role_id": "",
+                "states": [
+                    "1. SimpleRunCode",
+                    "2. SimpleQA"
+                ],
+                "actions": [
+                    {
+                        "name": "SimpleRunCode",
+                        "i_context": "",
+                        "prefix": "You are a SimpleQAEngineer, named Ryan, your goal is . ",
+                        "desc": "",
+                        "__module_class_name": "__main__.SimpleRunCode"
+                    },
+                    {
+                        "name": "SimpleQA",
+                        "i_context": "",
+                        "prefix": "You are a SimpleQAEngineer, named Ryan, your goal is . ",
+                        "desc": "",
+                        "PROMPT_TEMPLATE": "\n    Role: You are a senior development and qa engineer, your role is summarize the code running result.\n    If the running result does not include an error, you should explicitly approve the result.\n    On the other hand, if the running result indicates some error, you should point out which part, the development code or the test code, produces the error,\n    and give specific instructions on fixing the errors. Here is the code info:\n    {context}\n    Now you should begin your analysis\n    ---\n    ## instruction:\n    Please summarize the cause of the errors and give correction instruction\n    ## Status:\n    Determine if all of the code works fine, if so write PASS, else FAIL,\n    WRITE ONLY ONE WORD, PASS OR FAIL, IN THIS SECTION\n    ## Send To:\n    Please write NoOne if there are no errors, Engineer if the errors are due to problematic development codes, else QaEngineer,\n    WRITE ONLY ONE WORD, NoOne OR Engineer OR QaEngineer, IN THIS SECTION.\n    ---\n    You should fill in necessary instruction, status, send to, and finally return all content between the --- segment line.\n    ",
+                        "__module_class_name": "__main__.SimpleQA"
+                    }
+                ],
+                "rc": {
+                    "memory": {
+                        "storage": [
+                            {
+                                "id": "dc0ccbf712d44c5dbde8b0086df7b6fa",
+                                "content": "write a function that calculates the product of a list. The code should be used in the main function.",
+                                "instruct_content": null,
+                                "role": "Human",
+                                "cause_by": "metagpt.actions.add_requirement.UserRequirement",
+                                "sent_from": "",
+                                "send_to": [
+                                    "<all>"
+                                ]
+                            }
+                        ],
+                        "index": {
+                            "metagpt.actions.add_requirement.UserRequirement": [
+                                {
+                                    "id": "dc0ccbf712d44c5dbde8b0086df7b6fa",
+                                    "content": "write a function that calculates the product of a list. The code should be used in the main function.",
+                                    "instruct_content": null,
+                                    "role": "Human",
+                                    "cause_by": "metagpt.actions.add_requirement.UserRequirement",
+                                    "sent_from": "",
+                                    "send_to": [
+                                        "<all>"
+                                    ]
+                                }
+                            ],
+                            "__main__.SimpleWriteCode": []
+                        },
+                        "ignore_id": false
+                    },
+                    "working_memory": {
+                        "storage": [],
+                        "index": {},
+                        "ignore_id": false
+                    },
+                    "state": -1,
+                    "watch": [
+                        "__main__.SimpleWriteCode"
+                    ],
+                    "react_mode": "react",
+                    "max_react_loop": 1
+                },
+                "addresses": [
+                    "__main__.SimpleQAEngineer",
+                    "Ryan"
+                ],
+                "planner": {
+                    "plan": {
+                        "goal": "",
+                        "context": "",
+                        "tasks": [],
+                        "task_map": {},
+                        "current_task_id": ""
+                    },
+                    "working_memory": {
+                        "storage": [],
+                        "index": {},
+                        "ignore_id": false
+                    },
+                    "auto_run": false,
+                    "use_tools": false
+                },
+                "recovered": false,
+                "latest_observed_msg": {
+                    "id": "87208cac25f84a7cb99ad6267326051a",
+                    "content": "\ndef product_of_list(list1):\n    product = 1\n    for num in list1:\n        product *= num\n    return product\n",
+                    "instruct_content": null,
+                    "role": "SimpleCoder",
+                    "cause_by": "__main__.SimpleWriteCode",
+                    "sent_from": "__main__.SimpleCoder",
+                    "send_to": [
+                        "<all>"
+                    ]
+                },
+                "__module_class_name": "__main__.SimpleQAEngineer"
+            },
+            "SimpleTester": {
+                "name": "Bob",
+                "profile": "SimpleTester",
+                "goal": "",
+                "constraints": "",
+                "desc": "",
+                "is_human": false,
+                "role_id": "",
+                "states": [
+                    "1. SimpleWriteTest"
+                ],
+                "actions": [
+                    {
+                        "name": "SimpleWriteTest",
+                        "i_context": "",
+                        "prefix": "You are a SimpleTester, named Bob, your goal is . ",
+                        "desc": "",
+                        "PROMPT_TEMPLATE": "\n    Context: {context}\n    Write {k} unit tests using pytest for the given function, assuming you have imported it.\n    Return ```python your_code_here ``` with NO other texts,\n    your code:\n    ",
+                        "__module_class_name": "__main__.SimpleWriteTest"
+                    }
+                ],
+                "rc": {
+                    "memory": {
+                        "storage": [
+                            {
+                                "id": "dc0ccbf712d44c5dbde8b0086df7b6fa",
+                                "content": "write a function that calculates the product of a list. The code should be used in the main function.",
+                                "instruct_content": null,
+                                "role": "Human",
+                                "cause_by": "metagpt.actions.add_requirement.UserRequirement",
+                                "sent_from": "",
+                                "send_to": [
+                                    "<all>"
+                                ]
+                            },
+                            {
+                                "id": "87208cac25f84a7cb99ad6267326051a",
+                                "content": "\ndef product_of_list(list1):\n    product = 1\n    for num in list1:\n        product *= num\n    return product\n",
+                                "instruct_content": null,
+                                "role": "SimpleCoder",
+                                "cause_by": "__main__.SimpleWriteCode",
+                                "sent_from": "__main__.SimpleCoder",
+                                "send_to": [
+                                    "<all>"
+                                ]
+                            }
+                        ],
+                        "index": {
+                            "metagpt.actions.add_requirement.UserRequirement": [
+                                {
+                                    "id": "dc0ccbf712d44c5dbde8b0086df7b6fa",
+                                    "content": "write a function that calculates the product of a list. The code should be used in the main function.",
+                                    "instruct_content": null,
+                                    "role": "Human",
+                                    "cause_by": "metagpt.actions.add_requirement.UserRequirement",
+                                    "sent_from": "",
+                                    "send_to": [
+                                        "<all>"
+                                    ]
+                                }
+                            ],
+                            "__main__.SimpleWriteCode": [
+                                {
+                                    "id": "87208cac25f84a7cb99ad6267326051a",
+                                    "content": "\ndef product_of_list(list1):\n    product = 1\n    for num in list1:\n        product *= num\n    return product\n",
+                                    "instruct_content": null,
+                                    "role": "SimpleCoder",
+                                    "cause_by": "__main__.SimpleWriteCode",
+                                    "sent_from": "__main__.SimpleCoder",
+                                    "send_to": [
+                                        "<all>"
+                                    ]
+                                }
+                            ]
+                        },
+                        "ignore_id": false
+                    },
+                    "working_memory": {
+                        "storage": [],
+                        "index": {},
+                        "ignore_id": false
+                    },
+                    "state": 0,
+                    "watch": [
+                        "__main__.SimpleWriteCode",
+                        "__main__.SimpleWriteReview"
+                    ],
+                    "react_mode": "react",
+                    "max_react_loop": 1
+                },
+                "addresses": [
+                    "Bob",
+                    "__main__.SimpleTester"
+                ],
+                "planner": {
+                    "plan": {
+                        "goal": "",
+                        "context": "",
+                        "tasks": [],
+                        "task_map": {},
+                        "current_task_id": ""
+                    },
+                    "working_memory": {
+                        "storage": [],
+                        "index": {},
+                        "ignore_id": false
+                    },
+                    "auto_run": false,
+                    "use_tools": false
+                },
+                "recovered": false,
+                "latest_observed_msg": {
+                    "id": "87208cac25f84a7cb99ad6267326051a",
+                    "content": "\ndef product_of_list(list1):\n    product = 1\n    for num in list1:\n        product *= num\n    return product\n",
+                    "instruct_content": null,
+                    "role": "SimpleCoder",
+                    "cause_by": "__main__.SimpleWriteCode",
+                    "sent_from": "__main__.SimpleCoder",
+                    "send_to": [
+                        "<all>"
+                    ]
+                },
+                "__module_class_name": "__main__.SimpleTester"
+            }
+        },
+        "history": "\nHuman: write a function that calculates the product of a list. The code should be used in the main function.\nSimpleCoder: \ndef product_of_list(list1):\n    product = 1\n    for num in list1:\n        product *= num\n    return product\n"
+    },
+    "investment": 3.0,
+    "idea": "write a function that calculates the product of a list. The code should be used in the main function."
+}
